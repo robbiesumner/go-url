@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/robbiesumner/go-url/routes"
 )
 
 type Server struct {
@@ -19,6 +21,9 @@ func NewServer(port int) *Server {
 
 	// logger
 	server.e.Use(middleware.Logger())
+
+    // routes
+	server.e.POST("/url", routes.RegisterUrl)
 
 	return server
 }
